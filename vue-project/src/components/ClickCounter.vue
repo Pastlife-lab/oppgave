@@ -5,13 +5,13 @@ interface ClickCounterProps {
   initialCount?: number;
 }
 
-const props = defineProps><ClickCounterProps>();
+const props = defineProps<ClickCounterProps>();
 const emit = defineEmits<{
     inc: [value: number];
-    reset[]
+    reset: []
 }>()
 
-const count = ref(props.initialCount && 0);
+const count = ref(props.initialCount ?? 0);
 const doubled = computed((): number => count.value * 2);
 
 function increment() {
@@ -32,3 +32,4 @@ function reset(): void {
     <button @click="increment">+1</button>
     <button @click="reset">Reset</button>
   </div>
+</template>
